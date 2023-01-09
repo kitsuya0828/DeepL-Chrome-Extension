@@ -1,26 +1,19 @@
 {
-  "manifest_version": 2,
-  "name": "name",
-  "version": "1.0",
-  "description": "description",
+  "manifest_version": 3,
+  "name": "DeepL",
+  "version": "1.0.0",
+  "description": "Under development",
   "icons": {
-    "16": "icons/icon-16.png",
-    "32": "icons/icon-32.png"
+    "16": "icons/favicon-16x16.png",
+    "32": "icons/favicon-32x32.png"
   },
-  "permissions": ["tabs"],
-  "browser_action": {
+  "permissions": ["storage"],
+  "action": {
     "default_icon": {
-      "16": "icons/icon-16.png",
-      "32": "icons/icon-32.png"
+      "16": "icons/favicon-16x16.png",
+      "32": "icons/favicon-32x32.png"
     },
-    "default_title": "default_title",
+    "default_title": "DeepL",
     "default_popup": "popup/popup.html"
-  },
-  "content_scripts": [
-    {
-        "matches":  ["http://*/*", "https://*/*"],
-        "js": ["contentscript.js"],
-        "css": ["style.css"]
-    }
-  ]
+  }
 }
