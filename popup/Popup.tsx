@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import browser from 'webextension-polyfill';
 import { getBucket } from '@extend-chrome/storage';
 import translate from 'deepl';
+import { Textarea  } from '@nextui-org/react';
 
 interface MyBucket {
   AUTH_KEY: string;
@@ -49,7 +50,14 @@ export const Popup: React.FC = () => {
 
   return authKey ? (
     <>
-      <input value={text} onChange={(event) => setText(event.target.value)} />
+      {/* <input value={text} onChange={(event) => setText(event.target.value)} /> */}
+      <Textarea
+      label="Write your thoughts"
+      placeholder="翻訳するテキストを入力してください"
+      value={text}
+      onChange={(event) => setText(event.target.value)}
+      width="200px"
+    />
       <button onClick={handleClick}>Translate</button>
       <p>{response}</p>
     </>
