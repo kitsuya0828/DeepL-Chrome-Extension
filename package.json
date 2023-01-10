@@ -15,10 +15,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.4.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@extend-chrome/storage": "^1.5.0",
     "@nextui-org/react": "^1.0.0-beta.12",
     "deepl": "^1.0.13",
     "esbuild": "^0.15.10",
+    "framer-motion": "^8.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "webextension-polyfill": "^0.10.0"

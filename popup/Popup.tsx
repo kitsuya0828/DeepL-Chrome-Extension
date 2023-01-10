@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // import browser from 'webextension-polyfill';
 import { getBucket } from '@extend-chrome/storage';
 import translate from 'deepl';
-import { Textarea  } from '@nextui-org/react';
+import { Textarea, Button, Text, Container, Spacer } from '@nextui-org/react';
 
 interface MyBucket {
   AUTH_KEY: string;
@@ -11,7 +11,7 @@ interface MyBucket {
 const bucket = getBucket<MyBucket>('my-bucket');
 
 export const Popup: React.FC = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState('こんにちは');
   const [inputKey, setInputKey] = useState('');
   const [authKey, setAuthKey] = useState('');
   const [response, setResponse] = useState('');
@@ -49,26 +49,26 @@ export const Popup: React.FC = () => {
   };
 
   return authKey ? (
-    <>
-      {/* <input value={text} onChange={(event) => setText(event.target.value)} /> */}
+    <div>
       <Textarea
-      label="Write your thoughts"
-      placeholder="翻訳するテキストを入力してください"
-      value={text}
-      onChange={(event) => setText(event.target.value)}
-      width="200px"
-    />
-      <button onClick={handleClick}>Translate</button>
-      <p>{response}</p>
-    </>
-  ) : (
-    <>
-      <p>Auth Key</p>
-      <input
-        value={inputKey}
-        onChange={(event) => setInputKey(event.target.value)}
+        initialValue="こんにちは"
+        onChange={(e) => setText(e.target.value)}
+        width="200px"
       />
-      <button onClick={handleRegister}>Register</button>
-    </>
+      <Button onClick={handleClick} size="xs" css={{ margin: 'auto' }}>
+        翻訳する
+      </Button>
+      <Spacer y={1} />
+      <Text>{response}</Text>
+    </div>
+  ) : (
+    <div>
+      <Text>認証キー：</Text>
+      <Textarea onChange={(e) => setInputKey(e.target.value)} width="200px" />
+      <Spacer y={1} />
+      <Button onClick={handleRegister} size="xs" css={{ margin: 'auto' }}>
+        登録する
+      </Button>
+    </div>
   );
 };
