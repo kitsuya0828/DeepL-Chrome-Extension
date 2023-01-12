@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import browser from 'webextension-polyfill';
 import { getBucket } from '@extend-chrome/storage';
 import translate from 'deepl';
-import { Textarea, Button, Text, Container, Spacer } from '@nextui-org/react';
+import { Textarea, Button, Text, Spacer } from '@nextui-org/react';
+import ReactDOM from 'react-dom';
 
 interface MyBucket {
   AUTH_KEY: string;
@@ -10,7 +10,7 @@ interface MyBucket {
 
 const bucket = getBucket<MyBucket>('my-bucket');
 
-export const Popup: React.FC = () => {
+export const Popup = () => {
   const [text, setText] = useState('こんにちは');
   const [inputKey, setInputKey] = useState('');
   const [authKey, setAuthKey] = useState('');
@@ -72,3 +72,11 @@ export const Popup: React.FC = () => {
     </div>
   );
 };
+
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Popup />
+  </React.StrictMode>,
+  document.getElementById("root")
+);

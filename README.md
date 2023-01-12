@@ -1,110 +1,70 @@
-# Template for a browser extension
+# Chrome Extension TypeScript Starter
 
-Build a browser extension with React + TypeScript + esbuild.
-Supporting both Firefox and Chrome.
+![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
 
-## Basic Usage
+Chrome Extension, TypeScript and Visual Studio Code
 
-Following examples are for `yarn`. For `npm`, please translate by yourself.
+## Prerequisites
 
-### Build
+* [node + npm](https://nodejs.org/) (Current Version)
 
-Firefox:
+## Option
 
-```
-yarn run build:firefox
-```
+* [Visual Studio Code](https://code.visualstudio.com/)
 
-With watch mode:
+## Includes the following
 
-```
-yarn run build:firefox --watch
-```
+* TypeScript
+* Webpack
+* React
+* Jest
+* Example Code
+    * Chrome Storage
+    * Options Version 2
+    * content script
+    * count up badge number
+    * background
 
-Enable source map:
+## Project Structure
 
-```
-yarn run build:firefox --dev
-```
+* src/typescript: TypeScript source files
+* src/assets: static files
+* dist: Chrome Extension directory
+* dist/js: Generated JavaScript files
 
-Chrome:
-
-```
-yarn run build:chrome
-```
-
-Build for both browsers:
-
-```
-yarn build
-```
-
-### Run with browsers
-
-Firefox:
+## Setup
 
 ```
-yarn run run:firefox
+npm install
 ```
 
-Chrome
+## Import as Visual Studio Code project
+
+...
+
+## Build
 
 ```
-yarn run run:chrome
+npm run build
 ```
 
-### Create a package for Firefox (zip)
+## Build in watch mode
+
+### terminal
 
 ```
-yarn run package:firefox
+npm run watch
 ```
 
-To install an unsigned add-on, you must use Firefox Developer Edition and change settings.
-https://support.mozilla.org/en-US/kb/add-on-signing-in-firefox
+### Visual Studio Code
 
-### Type check
+Run watch mode.
 
-```
-yarn run typecheck
-```
+type `Ctrl + Shift + B`
 
-### ESLint
+## Load extension to chrome
 
-```
-yarn run lint
-```
+Load `dist` directory
 
-#### Fix
-
-```
-yarn run lint:fix
-```
-
-### Prettier
-
-```
-yarn run format
-```
-
-## Customization
-
-### Change Add-on ID for Firefox
-
-Edit `firefox.json`.
-It looks like ID need to match following format:
-
-- `{<UUID>}`
-  - e.g. `{abac34b6-b4bd-4fc7-af89-6f7d30be386b}`
-- `<alphanum>@<alphanum>`
-  - e.g. `dummy@dummy`
-
-cf. https://stackoverflow.com/questions/45339492/firefox-add-on-id-conventions
-
-### Add background_scripts, etc.
-
-Edit `build.ts` and configure [esbuild](https://esbuild.github.io/).
-
-## For Japanese users
-
-Here is an article about this template.  
-https://zenn.dev/htlsne/articles/web-ext-react-esbuild
+## Test
+`npx jest` or `npm run test`
