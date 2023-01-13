@@ -24,6 +24,28 @@ export const Popup = () => {
     }
   };
 
+  chrome.runtime.onMessage.addListener(
+    async function(request, sender, sendResponse) {
+        if (request.msg === "deepl") {
+            console.log(request.data.text)
+            const value = await bucket.get();
+            await translate({
+              text: request.data.text,
+              target_lang: 'EN',
+              auth_key: value.AUTH_KEY,
+              free_api: true,
+            })
+              .then((result) => {
+                console.log(result.data.translations[0].text);
+                alert(result.data.translations[0].text);
+              })
+              .catch((error) => {
+                alert(error);
+              });
+        }
+    }
+  );
+
   useEffect(() => {
     (async () => {
       const value = await bucket.get();
@@ -80,3 +102,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+

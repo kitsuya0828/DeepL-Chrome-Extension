@@ -31,12 +31,15 @@
   "background": {
     "service_worker": "js/background.js"
   },
-
+  
   "permissions": [
+    "http://*/*", "https://*/*",
     "storage",
     "activeTab",
     "contextMenus",
-    "scripting"
+    "scripting",
+    "nativeMessaging",
+    "clipboardWrite"
   ],
 
   "host_permissions": [
