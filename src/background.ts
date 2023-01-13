@@ -1,7 +1,12 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    id: "deepl",
-    title: "DeepL",
+    id: "EN",
+    title: "英語に翻訳",
+    contexts: ["all"],
+  });
+  chrome.contextMenus.create({
+    id: "JA",
+    title: "日本語に翻訳",
     contexts: ["all"],
   });
 });
@@ -9,20 +14,24 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (tab !== undefined) {
     switch (info.menuItemId) {
-      case "deepl":
+      case "EN":
         chrome.tabs.sendMessage(tab.id as number, {
-          msg: "deepl",
+          msg: "DeepL",
           data: {
+            lang: "EN",
+            text: info.selectionText,
+          },
+        });
+        break;
+      case "JA":
+        chrome.tabs.sendMessage(tab.id as number, {
+          msg: "DeepL",
+          data: {
+            lang: "JA",
             text: info.selectionText,
           },
         });
         break;
     }
-  }
-});
-
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.msg === "translation") {
-    console.log(request.text);
   }
 });

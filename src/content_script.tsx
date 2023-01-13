@@ -12,11 +12,11 @@ chrome.runtime.onMessage.addListener(async function (
   sender,
   sendResponse
 ) {
-  if (request.msg === "deepl") {
+  if (request.msg === "DeepL") {
     const value = await bucket.get();
     await translate({
       text: request.data.text,
-      target_lang: "EN",
+      target_lang: request.data.lang,
       auth_key: value.AUTH_KEY,
       free_api: true,
     })
@@ -25,7 +25,8 @@ chrome.runtime.onMessage.addListener(async function (
         alert(result.data.translations[0].text);
       })
       .catch((error) => {
-        alert(error);
+        console.log(error);
+        alert("エラーが発生しました");
       });
   }
 });
