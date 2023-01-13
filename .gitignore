@@ -1,8 +1,7 @@
 npm-debug.log
 node_modules/
 dist/
-dist.crx
-dist.pem
+dist.zip
 tmp/
 .env
 .DS_Store
