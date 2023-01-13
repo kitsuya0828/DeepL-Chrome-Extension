@@ -67,6 +67,7 @@ export const Popup = () => {
         initialValue="こんにちは"
         onChange={(e) => setText(e.target.value)}
         width="200px"
+        aria-label="text"
       />
       <Spacer y={1} />
       <Button onPressEnd={handleClick} size="xs" css={{ margin: "auto" }}>
@@ -75,14 +76,14 @@ export const Popup = () => {
       {response && (
         <>
           <Spacer y={1} />
-          <Textarea value={response} width="200px" />
+          <Textarea value={response} width="200px" aria-label="response" />
         </>
       )}
     </div>
   ) : (
     <div>
       <Text>認証キー：</Text>
-      <Textarea onChange={(e) => setInputKey(e.target.value)} width="200px" />
+      <Textarea onChange={(e) => setInputKey(e.target.value)} width="200px" aria-label="inputKey" />
       <Spacer y={1} />
       <Button onPressEnd={handleRegister} size="xs" css={{ margin: "auto" }}>
         登録する

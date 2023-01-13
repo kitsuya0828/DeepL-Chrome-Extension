@@ -59,6 +59,7 @@ const Options = () => {
             type="checkbox"
             checked={like}
             onChange={(event) => setLike(event.target.checked)}
+            aria-label="like"
           />
           I like colors.
         </label>
