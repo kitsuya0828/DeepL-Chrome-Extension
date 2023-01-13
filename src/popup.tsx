@@ -1,20 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { getBucket } from '@extend-chrome/storage';
-import translate from 'deepl';
-import { Textarea, Button, Text, Spacer } from '@nextui-org/react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useRef, useState } from "react";
+import { getBucket } from "@extend-chrome/storage";
+import translate from "deepl";
+import { Textarea, Button, Text, Spacer } from "@nextui-org/react";
+import ReactDOM from "react-dom";
 
 interface MyBucket {
   AUTH_KEY: string;
 }
 
-const bucket = getBucket<MyBucket>('my-bucket', 'sync');
+const bucket = getBucket<MyBucket>("my-bucket", "sync");
 
 export const Popup = () => {
-  const [text, setText] = useState('こんにちは');
-  const [inputKey, setInputKey] = useState('');
-  const [authKey, setAuthKey] = useState('');
-  const [response, setResponse] = useState('');
+  const [text, setText] = useState("こんにちは");
+  const [inputKey, setInputKey] = useState("");
+  const [authKey, setAuthKey] = useState("");
+  const [response, setResponse] = useState("");
 
   const handleRegister = async () => {
     bucket.set({ AUTH_KEY: inputKey });
@@ -23,28 +23,6 @@ export const Popup = () => {
       setAuthKey(value.AUTH_KEY);
     }
   };
-
-  chrome.runtime.onMessage.addListener(
-    async function(request, sender, sendResponse) {
-        if (request.msg === "deepl") {
-            console.log(request.data.text)
-            const value = await bucket.get();
-            await translate({
-              text: request.data.text,
-              target_lang: 'EN',
-              auth_key: value.AUTH_KEY,
-              free_api: true,
-            })
-              .then((result) => {
-                console.log(result.data.translations[0].text);
-                alert(result.data.translations[0].text);
-              })
-              .catch((error) => {
-                alert(error);
-              });
-        }
-    }
-  );
 
   useEffect(() => {
     (async () => {
@@ -58,7 +36,7 @@ export const Popup = () => {
   const handleClick = async (): Promise<void> => {
     await translate({
       text: text,
-      target_lang: 'EN',
+      target_lang: "EN",
       auth_key: authKey,
       free_api: true,
     })
@@ -77,7 +55,7 @@ export const Popup = () => {
         onChange={(e) => setText(e.target.value)}
         width="200px"
       />
-      <Button onClick={handleClick} size="xs" css={{ margin: 'auto' }}>
+      <Button onClick={handleClick} size="xs" css={{ margin: "auto" }}>
         翻訳する
       </Button>
       <Spacer y={1} />
@@ -88,13 +66,12 @@ export const Popup = () => {
       <Text>認証キー：</Text>
       <Textarea onChange={(e) => setInputKey(e.target.value)} width="200px" />
       <Spacer y={1} />
-      <Button onClick={handleRegister} size="xs" css={{ margin: 'auto' }}>
+      <Button onClick={handleRegister} size="xs" css={{ margin: "auto" }}>
         登録する
       </Button>
     </div>
   );
 };
-
 
 ReactDOM.render(
   <React.StrictMode>
@@ -102,4 +79,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
