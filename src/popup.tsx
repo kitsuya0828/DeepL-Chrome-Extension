@@ -8,7 +8,7 @@ interface MyBucket {
   AUTH_KEY: string;
 }
 
-const bucket = getBucket<MyBucket>('my-bucket');
+const bucket = getBucket<MyBucket>('my-bucket', 'sync');
 
 export const Popup = () => {
   const [text, setText] = useState('こんにちは');
