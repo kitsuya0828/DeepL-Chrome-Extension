@@ -34,9 +34,22 @@ export const Popup = () => {
   }, []);
 
   const handleClick = async (): Promise<void> => {
-    await translate({
+    const detected = await translate({
       text: text,
       target_lang: "EN",
+      auth_key: authKey,
+      free_api: true,
+    })
+      .then((result) => {
+        return result.data.translations[0].detected_source_language;
+      })
+      .catch((error) => {
+        return "error";
+      });
+
+    await translate({
+      text: text,
+      target_lang: detected === "JA" ? "EN" : "JA",
       auth_key: authKey,
       free_api: true,
     })
@@ -44,7 +57,7 @@ export const Popup = () => {
         setResponse(result.data.translations[0].text);
       })
       .catch((error) => {
-        setResponse(error);
+        setResponse("エラーが発生しました");
       });
   };
 
@@ -55,18 +68,23 @@ export const Popup = () => {
         onChange={(e) => setText(e.target.value)}
         width="200px"
       />
-      <Button onClick={handleClick} size="xs" css={{ margin: "auto" }}>
+      <Spacer y={1} />
+      <Button onPressEnd={handleClick} size="xs" css={{ margin: "auto" }}>
         翻訳する
       </Button>
-      <Spacer y={1} />
-      <Text>{response}</Text>
+      {response && (
+        <>
+          <Spacer y={1} />
+          <Textarea value={response} width="200px" />
+        </>
+      )}
     </div>
   ) : (
     <div>
       <Text>認証キー：</Text>
       <Textarea onChange={(e) => setInputKey(e.target.value)} width="200px" />
       <Spacer y={1} />
-      <Button onClick={handleRegister} size="xs" css={{ margin: "auto" }}>
+      <Button onPressEnd={handleRegister} size="xs" css={{ margin: "auto" }}>
         登録する
       </Button>
     </div>

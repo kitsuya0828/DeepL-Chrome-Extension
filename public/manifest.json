@@ -31,9 +31,8 @@
   "background": {
     "service_worker": "js/background.js"
   },
-  
+
   "permissions": [
-    "http://*/*", "https://*/*",
     "storage",
     "activeTab",
     "contextMenus",
