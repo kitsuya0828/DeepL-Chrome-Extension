@@ -1,36 +1,12 @@
-# Chrome Extension TypeScript Starter
+# DeepL Chrome Extension
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
-
-Chrome Extension, TypeScript and Visual Studio Code
-
-## Prerequisites
-
-* [node + npm](https://nodejs.org/) (Current Version)
-
-## Option
-
-* [Visual Studio Code](https://code.visualstudio.com/)
-
-## Includes the following
-
-* TypeScript
-* Webpack
-* React
-* Jest
-* Example Code
-    * Chrome Storage
-    * Options Version 2
-    * content script
-    * count up badge number
-    * background
+generated from [chibat/chrome\-extension\-typescript\-starter: Chrome Extension TypeScript Starter](https://github.com/chibat/chrome-extension-typescript-starter)
 
 ## Project Structure
 
-* src/typescript: TypeScript source files
-* src/assets: static files
-* dist: Chrome Extension directory
-* dist/js: Generated JavaScript files
+* `src/` : Source files
+* `dist/` : Chrome Extension directory
+* `dist/js/` : Generated JavaScript files
 
 ## Setup
 
@@ -38,33 +14,24 @@ Chrome Extension, TypeScript and Visual Studio Code
 npm install
 ```
 
-## Import as Visual Studio Code project
-
-...
-
 ## Build
 
 ```
 npm run build
 ```
 
-## Build in watch mode
-
-### terminal
+## Run in Visual Studio Code
 
 ```
-npm run watch
+npm run run:chrome
 ```
 
-### Visual Studio Code
 
-Run watch mode.
+## Load extension to Chrome
 
-type `Ctrl + Shift + B`
-
-## Load extension to chrome
-
-Load `dist` directory
+Load `dist/` directory from:
 
 ## Test
-`npx jest` or `npm run test`
+```
+npm run test
+```
