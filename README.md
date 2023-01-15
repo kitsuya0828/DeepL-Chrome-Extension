@@ -12,9 +12,11 @@ generated from [chibat/chrome\-extension\-typescript\-starter: Chrome Extension 
 
 ## Project Structure
 
-* `src/` : Source files
-* `dist/` : Chrome Extension directory
-* `dist/js/` : Generated JavaScript files
+|  Path  |  Description |
+| ---- | ---- |
+|  `src/`  |  Source files |
+|  `dist/`  |  Chrome Extension directory |
+|  `dist/js/`  |  Generated JavaScript files |
 
 ## Setup
 
